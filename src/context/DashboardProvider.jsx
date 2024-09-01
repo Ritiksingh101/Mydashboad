@@ -5,6 +5,7 @@ export const DashboardContext = createContext();
 
 const DashboardProvider = ({ children }) => {
   const [categories, setCategories] = useState(dashboardData.categories);
+  const [addwidget,setAddwidget]=useState(false)
 
   const addWidget = (categoryId, widget) => {
     // Logic to add a widget
@@ -15,7 +16,7 @@ const DashboardProvider = ({ children }) => {
   };
 
   return (
-    <DashboardContext.Provider value={{ categories, addWidget, removeWidget }}>
+    <DashboardContext.Provider value={{ categories, addWidget, removeWidget,addwidget,setAddwidget }}>
       {children}
     </DashboardContext.Provider>
   );
