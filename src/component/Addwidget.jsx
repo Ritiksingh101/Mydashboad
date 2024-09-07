@@ -1,11 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../context/DashboardProvider";
+import axios from "axios";
+import { json } from "react-router-dom";
 
 function Addwidget() {
   const { addwidget, setAddwidget } = useContext(DashboardContext);
+  const [data,setData]=useState([])
+  const getdata =()=>{
+    axios.get("http://localhost:5005/categories").then((res)=>setData(res.data))
+  }
+  useEffect(()=>{getdata()},[])
+  
+  const postdata=()=>{
+    axios.post("http://localhost:5005/categories",obj).then((res)=>alert(res))
+    .then((err)=>alert(err))
+  }
 
   return (
     <>
+    {JSON.stringify(data)}
       {addwidget && (
         <>
           <div
@@ -36,6 +49,7 @@ function Addwidget() {
                   type="checkbox"
                   id="checkbox"
                   className="mr-2 leading-tight"
+                  
                 />
                 <input
                   type="text"
@@ -57,6 +71,7 @@ function Addwidget() {
                 ></input>
               </div>
             </div>
+            <button onClick={()=>postdata()} >Submit</button>
           </div>
         </>
       )}

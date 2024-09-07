@@ -5,6 +5,7 @@ import Cnpp from '../component/Cnpp';
 import { useNavigate } from 'react-router-dom';
 import Addwidget from '../component/Addwidget';
 import { DashboardContext } from '../context/DashboardProvider';
+import AddWidgetForm from '../component/AddWidgetForm';
 
 
 const Layout = () => {
@@ -108,6 +109,7 @@ const Layout = () => {
          
 
       <Addwidget></Addwidget>
+      <AddWidgetForm></AddWidgetForm>
 
     </div>
   );
